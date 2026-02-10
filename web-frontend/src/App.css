@@ -135,3 +135,29 @@
   background-color: #f3f4ff;
   color: #4338ca;
 }
+
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.75rem 0 0.5rem;
+  font-size: 0.85rem;
+}
+
+.summary-table th,
+.summary-table td {
+  padding: 0.35rem 0.5rem;
+  text-align: left;
+}
+
+.summary-table thead {
+  background-color: #f3f4ff;
+}
+
+.summary-table tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+.chart-wrapper {
+  margin-top: 0.5rem;
+  min-height: 180px;
+}

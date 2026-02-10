@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../api";
+import Charts from "./Charts";
 
 function History() {
   const [data, setData] = useState([]);
@@ -20,21 +21,27 @@ function History() {
       {data.map((item) => (
         <li key={item.id} className="history-item">
           <h3 className="dataset-name">{item.name}</h3>
-          <p className="dataset-meta">
-            <span className="meta-pill">
-              Records: <strong>{item.summary.total_records}</strong>
-            </span>
-            <span className="meta-pill">
-              Flowrate: <strong>{item.summary.avg_flowrate.toFixed(2)}</strong>
-            </span>
-            <span className="meta-pill">
-              Pressure: <strong>{item.summary.avg_pressure.toFixed(2)}</strong>
-            </span>
-            <span className="meta-pill">
-              Temperature:{" "}
-              <strong>{item.summary.avg_temperature.toFixed(2)}</strong>
-            </span>
-          </p>
+
+          <table className="summary-table">
+            <thead>
+              <tr>
+                <th>Records</th>
+                <th>Avg Flowrate</th>
+                <th>Avg Pressure</th>
+                <th>Avg Temperature</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{item.summary.total_records}</td>
+                <td>{item.summary.avg_flowrate.toFixed(2)}</td>
+                <td>{item.summary.avg_pressure.toFixed(2)}</td>
+                <td>{item.summary.avg_temperature.toFixed(2)}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <Charts summary={item.summary} />
         </li>
       ))}
     </ul>
